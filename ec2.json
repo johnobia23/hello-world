@@ -7,12 +7,10 @@
       "Type": "AWS::EC2::Instance",
       "Properties": {
         "AvailabilityZone": "us-east-1b",
-        "IamInstanceProfile": "arn:aws:iam::671419583142:instance-profile/MyKubernetesClusterAccessEC2",
         "ImageId": "ami-0bc2031cb3bf182cb",
         "InstanceType": "t2.micro",
         "KeyName": "JohnTestAWSKeys",
-        "SecurityGroupIds": "sg-04d6e8f72cafed4bb",
-        "SecurityGroups": "MyAppServerSecurityGroup",
+        "SecurityGroupIds": [ "sg-04d6e8f72cafed4bb" ],
         "SubnetId": "subnet-0b0de71b4717dab2c"
       }
     }
@@ -24,7 +22,7 @@
           "",
           [
             "http://",
-            { "Fn::GetAtt": [ "WebServer", "PublicDnsName" ] },
+            { "Fn::GetAtt": [ "EC2Instance", "PublicDnsName" ] },
             "/wordpress"
           ]
         ]
