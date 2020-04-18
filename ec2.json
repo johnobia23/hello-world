@@ -10,8 +10,17 @@
         "ImageId": "ami-0bc2031cb3bf182cb",
         "InstanceType": "t2.micro",
         "KeyName": "JohnTestAWSKeys",
-        "SecurityGroupIds": [ "sg-04d6e8f72cafed4bb" ],
-        "SubnetId": "subnet-0b0de71b4717dab2c"
+        "NetworkInterfaces": [
+            {
+                "AssociatePublicIpAddress": true,
+                "DeleteOnTermination": true,
+                "DeviceIndex": "0",
+                "SubnetId": "subnet-0b0de71b4717dab2c",
+                "GroupSet": [
+                    "sg-04d6e8f72cafed4bb"
+                ]
+            }
+        ]
       }
     }
   },
