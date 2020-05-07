@@ -1,0 +1,14 @@
+- hosts: all_hosts
+  remote_user: ansadm
+  become: yes
+  gather_facts: no
+  pre_tasks:
+   - name: 'install python'
+     raw: 'sudo yum -y install python'
+  tasks:
+   - name: install httpd*
+     yum: name=httpd state=latest
+   - service: 
+       name: httpd*
+       state: started
+       enabled: yes
